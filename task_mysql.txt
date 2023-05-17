@@ -1,0 +1,86 @@
+Create movies table:
+--------------------
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    artist_id TEXT,
+    image blob);
+
+Insert values in movies table:
+------------------------------
+
+    INSERT INTO movies (title, artist_id, image)
+VALUES ('batman', 2, 'c://Users/screenshots/screenshot1.png');
+    INSERT INTO movies (title, artist_id, image)
+VALUES ('Toy Story', 2, 'c://Users/screenshots/screenshot2.png');
+    INSERT INTO movies (title, artist_id, image)
+VALUES ('Finding Nemo', 2, 'c://Users/screenshots/screenshot3.png');
+
+Create genre table:
+-------------------
+ 
+  CREATE TABLE genre (
+    movie_id int NOT NULL,
+    year varchar(255),
+    PRIMARY KEY (movie_id)
+);
+
+Insert values in genre table:
+-----------------------------
+
+INSERT INTO genre (movie_id, year)
+VALUES (1, 1987);
+
+ INSERT INTO genre (movie_id, year)
+VALUES (2, 2000);
+
+ INSERT INTO genre (movie_id, year)
+VALUES (3, 2022);
+
+
+Create reviews table:
+---------------------
+
+CREATE TABLE reviews (
+    movie_id int NOT NULL,
+    review varchar(255),
+    rating int,
+    user varchar,
+    PRIMARY KEY (movie_id)
+);
+
+Insert values in reviews table:
+-------------------------------
+    INSERT INTO reviews (movie_id, review,rating,user)
+VALUES (1,"good film",5,"Anitha");
+
+ INSERT INTO reviews (movie_id, review,rating,user)
+VALUES (2,"film was fine",4,"Ranjith");
+
+ INSERT INTO reviews (movie_id, review,rating,user)
+VALUES (3,"not bad",4,"Rana");
+
+Create table artist:
+--------------------
+
+CREATE TABLE artist (
+    id int PRIMARY KEY,
+    artist_name varchar(255),
+    role int
+);
+
+Insert values into artist table:
+--------------------------------
+
+INSERT INTO artist(id,artist_name,role)
+VALUES (1,"Bruce Wayne","here");
+INSERT INTO artist(id,artist_name,role)
+VALUES (2,"John","hero");
+INSERT INTO artist(id,artist_name,role)
+VALUES (3,"John","director");
+
+Select query for all tables:
+----------------------------
+
+select title,artist_name, role,year,image,review,rating,user from movies join genre on movies.id = genre.movie_id inner join reviews on movies.id = reviews.movie_id inner join artist on movies.artist_id = artist.id;
